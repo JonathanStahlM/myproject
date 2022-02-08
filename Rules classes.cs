@@ -11,7 +11,7 @@ namespace first_project
         public string Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("Contains");
+            Console.Write("{0} Contains {1}:    ", toCheck, Value);
             if (toCheck.Contains(Value))
             {
                 return true;
@@ -25,7 +25,9 @@ namespace first_project
         public List<string>? Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("any_Contains");
+            string tmp = string.Join(",", Value);
+            Console.Write(tmp);
+            Console.Write("{0} any_Contains one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
                 if (toCheck.Contains(item))

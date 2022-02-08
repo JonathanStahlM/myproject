@@ -15,36 +15,42 @@ namespace first_project
 
         static void Main()
         {
-            
+          
+            string? operation;
+            string? Value;
 
-            string? mystring = "abcd";
-
-
-
-            string? operation = "Length";
-            string? Value = "4";
-            RulesFunctions.AddRule(operation, Value);
-
-       
-
-            operation = "Contains";
-            Value = "m";
-            RulesFunctions.AddRule(operation, Value);
-
-         
-
-            /*
             bool flag = false;
             while (flag == false)
             {
-                string? mystring = Console.ReadLine();
-                string? operation = Console.ReadLine();
-                string? Value = Console.ReadLine();
+                Console.WriteLine("Type Operation:");
+                operation = Console.ReadLine();
+                Console.WriteLine("Type value:");
+                Value = Console.ReadLine();
+                if (Value.Contains(" "))
+                {
+                    List<string> ValueList = Value.Split(" ").ToList();
+                    RulesFunctions.AddRule(operation, ValueList);
+                }
+                else
+                {
+                    RulesFunctions.AddRule(operation, Value);
+                }
+                //List<string> ValueList = Value.Split("").ToList();
+                //RulesFunctions.AddRule(operation, ValueList);
+                Console.WriteLine("Add nother Rule? y/n");
+                if (Console.ReadLine() == "n")
+                {
+                    flag = true;
+                }
             }
 
-            */
 
-           
+            Console.WriteLine("Type a string to check:");
+            string? mystring = Console.ReadLine();
+            RulesFunctions.CheckAllRules(mystring, RulesFunctions.rules);
+
+            /*
+
 
             operation = "any_LengthGreaterThan";
             List<string> Value2 = new List<string>();
@@ -59,8 +65,8 @@ namespace first_project
             Value1.Add("a");
             RulesFunctions.AddRule(operation, Value1);
 
-
-            RulesFunctions.CheckAllRules(mystring, RulesFunctions.rules);
+            */
+            
     
         
         }

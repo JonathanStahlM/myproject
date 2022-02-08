@@ -8,12 +8,14 @@ namespace first_project
 {
     public static class RulesFunctions
     {
-        public static List<IRule> rules = new List<IRule>();
+        public static List<IRule> rules = new();
 
         public static void CheckAllRules(string mystring, List<IRule> rules)
-        {
+        {   
+
             foreach (IRule rule in rules)
             {
+                Console.WriteLine("Checking Rules...");
                 Console.WriteLine(rule.CheckRule(mystring));
             }
         }
@@ -22,8 +24,7 @@ namespace first_project
         public static int? CheckValidInt(string Value)
         {
             bool res;
-            int TheInt;
-            res = int.TryParse(Value, out TheInt);
+            res = int.TryParse(Value, out int TheInt);
 
             if (res)
             {
@@ -32,7 +33,7 @@ namespace first_project
             }
             else
             {
-
+                Console.WriteLine("Invalid Rule!!");
                 return null;
             }
         }
@@ -42,7 +43,7 @@ namespace first_project
         {
             bool res;
             int TheInt;
-            List<int> TheIntList = new List<int>();
+            List<int> TheIntList = new();
 
             foreach (var item in Value)
             {
@@ -54,7 +55,7 @@ namespace first_project
                 }
                 else
                 {
-
+                    Console.WriteLine("Invalid Rule!!");
                     return null;
                 }
             }
@@ -70,69 +71,60 @@ namespace first_project
             switch (operation)
             {
                 case "Contains":
-                    ContainsRule ContainsRule = new ContainsRule()
+                    ContainsRule ContainsRule = new()
                     {
                         Value = Value
                     };
                     rules.Add(ContainsRule);
                     break;
                 case "StartsWith":
-                    StartsWithRule StartsWithRule = new StartsWithRule()
+                    StartsWithRule StartsWithRule = new()
                     {
                         Value = Value
                     };
                     rules.Add(StartsWithRule);
                     break;
                 case "EndsWith":
-                    EndsWithRule EndsWithRule = new EndsWithRule()
+                    EndsWithRule EndsWithRule = new()
                     {
                         Value = Value
                     };
                     rules.Add(EndsWithRule);
                     break;
+
                 case "Length":
                     int? res = CheckValidInt(Value);
                     if (res != null)
                     {
-                        LengthRule LengthRule = new LengthRule()
+                        LengthRule LengthRule = new()
                         {
                             Value = (int)res
                         };
                         rules.Add(LengthRule);
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid Rule!!");
-                    }
                     break;
+
                 case "LengthGreaterThan":
                     res = CheckValidInt(Value);
                     if (res != null)
                     {
-                        LengthGreaterThanRule LengthGreaterThanRule = new LengthGreaterThanRule()
+                        LengthGreaterThanRule LengthGreaterThanRule = new()
                         {
                             Value = (int)res
                         };
                         rules.Add(LengthGreaterThanRule);
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid Rule!!");
-                    }
                     break;
+
                 case "LengthSmallerThan":
                     res = CheckValidInt(Value);
                     if (res != null)
                     {
-                        LengthSmallerThanRule LengthSmallerThanRule = new LengthSmallerThanRule()
+                        LengthSmallerThanRule LengthSmallerThanRule = new()
                         {
                             Value = (int)res
                         };
                         rules.Add(LengthSmallerThanRule);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Rule!!");
                     }
                     break;
 
@@ -148,14 +140,14 @@ namespace first_project
             switch (operation)
             {
                 case "any_Contains":
-                    any_ContainsRule any_ContainsRule = new any_ContainsRule()
+                    any_ContainsRule any_ContainsRule = new()
                     {
                         Value = Value
                     };
                     rules.Add(any_ContainsRule);
                     break;
                 case "any_StartsWith":
-                    any_StartsWithRule any_StartsWithRule = new any_StartsWithRule()
+                    any_StartsWithRule any_StartsWithRule = new()
                     {
                         Value = Value
                     };
@@ -163,7 +155,7 @@ namespace first_project
                     break;
 
                 case "any_EndsWith":
-                    any_EndsWithRule any_EndsWithRule = new any_EndsWithRule()
+                    any_EndsWithRule any_EndsWithRule = new()
                     {
                         Value = Value
                     };
@@ -174,45 +166,35 @@ namespace first_project
                     List<int>? res = CheckValidIntList(Value);
                     if (res != null)
                     {
-                        any_LengthRule any_LengthRule = new any_LengthRule()
+                        any_LengthRule any_LengthRule = new()
                         {
                             Value = (List<int>)res
                         };
                         rules.Add(any_LengthRule);
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid Rule!!");
-                    }
                     break;
+
                 case "any_LengthGreaterThan":
                     res = CheckValidIntList(Value);
                     if (res != null)
                     {
-                        any_LengthGreaterThanRule any_LengthGreaterThanRule = new any_LengthGreaterThanRule()
+                        any_LengthGreaterThanRule any_LengthGreaterThanRule = new()
                         {
                             Value = (List<int>)res
                         };
                         rules.Add(any_LengthGreaterThanRule);
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid Rule!!");
-                    }
                     break;
+
                 case "LengthSmallerThan":
                     res = CheckValidIntList(Value);
                     if (res != null)
                     {
-                        any_LengthSmallerThanRule any_LengthSmallerThanRule = new any_LengthSmallerThanRule()
+                        any_LengthSmallerThanRule any_LengthSmallerThanRule = new()
                         {
                             Value = (List<int>)res
                         };
                         rules.Add(any_LengthSmallerThanRule);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Rule!!");
                     }
                     break;
             }

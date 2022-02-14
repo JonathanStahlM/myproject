@@ -9,9 +9,7 @@ namespace first_project
 
     public interface IRule
     {
-
-
-        //string Value { get; set; }
+        //List<string> Value { get; set; }
         public bool CheckRule(string toCheck);
 
 

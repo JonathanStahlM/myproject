@@ -11,7 +11,7 @@ namespace first_project
         public string Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.Write("{0} Contains {1}:    ", toCheck, Value);
+            Console.Write("'{0}' Contains {1}:    ", toCheck, Value);
             if (toCheck.Contains(Value))
             {
                 return true;
@@ -26,8 +26,7 @@ namespace first_project
         public bool CheckRule(string toCheck)
         {
             string tmp = string.Join(",", Value);
-            Console.Write(tmp);
-            Console.Write("{0} any_Contains one of ({1}):    ", toCheck, tmp);
+            Console.Write("'{0}' any_Contains one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
                 if (toCheck.Contains(item))
@@ -44,7 +43,7 @@ namespace first_project
         public string Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("StartsWith");
+            Console.Write("'{0}' StartsWith {1}:    ", toCheck, Value);
             if (toCheck.StartsWith(Value))
             {
                 return true;
@@ -58,7 +57,8 @@ namespace first_project
         public List<string>? Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("any_StartsWithRule");
+            string tmp = string.Join(",", Value);
+            Console.Write("'{0}' any_StartsWith one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
                 if (toCheck.Contains(item))
@@ -74,7 +74,7 @@ namespace first_project
         public string Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("EndsWith");
+            Console.Write("'{0}' EndsWith {1}:    ", toCheck, Value);
             if (toCheck.EndsWith(Value))
             {
                 return true;
@@ -89,7 +89,8 @@ namespace first_project
         public List<string>? Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("any_EndsWithRule");
+            string tmp = string.Join(",", Value);
+            Console.Write("'{0}' any_EndsWith one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
                 if (toCheck.Contains(item))
@@ -107,7 +108,7 @@ namespace first_project
 
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("Length");
+            Console.Write("'{0}' Length equal to {1}:    ", toCheck, Value);
             if (toCheck.Length ==  Value)
             {
                 return true;
@@ -123,7 +124,8 @@ namespace first_project
 
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("any_LengthRule");
+            string tmp = string.Join(",", Value);
+            Console.Write("'{0}' any_Length of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
                 if (toCheck.Length == item)
@@ -142,7 +144,7 @@ namespace first_project
 
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("LengthGreaterThan");
+            Console.Write("'{0}' LengthGreaterThan {1}:    ", toCheck, Value);
             if (toCheck.Length > Value)
             {
                 return true;
@@ -158,7 +160,8 @@ namespace first_project
 
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("any_LengthGreaterThanRule");
+            string tmp = string.Join(",", Value);
+            Console.Write("'{0}' any_GreaterThan one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
                 if (toCheck.Length > item)
@@ -177,7 +180,7 @@ namespace first_project
 
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("LengthSmallerThanRule");
+            Console.Write("'{0}' LengthSmallerrThan {1}:    ", toCheck, Value);
             if (toCheck.Length < Value)
             {
                 return true;
@@ -192,7 +195,8 @@ namespace first_project
 
         public bool CheckRule(string toCheck)
         {
-            Console.WriteLine("any_LengthSmallerThanRule");
+            string tmp = string.Join(",", Value);
+            Console.Write("'{0}' any_SmallerThan one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
                 if (toCheck.Length < item)

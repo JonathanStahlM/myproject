@@ -11,7 +11,7 @@ namespace first_project
         public string Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.Write("'{0}' Contains {1}:    ", toCheck, Value);
+            Console.Write("'{0}' Contains '{1}':    ", toCheck, Value);
             if (toCheck.Contains(Value))
             {
                 return true;
@@ -43,7 +43,7 @@ namespace first_project
         public string Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.Write("'{0}' StartsWith {1}:    ", toCheck, Value);
+            Console.Write("'{0}' StartsWith '{1}':    ", toCheck, Value);
             if (toCheck.StartsWith(Value))
             {
                 return true;
@@ -57,11 +57,11 @@ namespace first_project
         public List<string>? Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            string tmp = string.Join(",", Value);
+            string tmp = string.Join(", ", Value);
             Console.Write("'{0}' any_StartsWith one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
-                if (toCheck.Contains(item))
+                if (toCheck.StartsWith(item))
                 {
                     return true;
                 }
@@ -74,7 +74,7 @@ namespace first_project
         public string Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            Console.Write("'{0}' EndsWith {1}:    ", toCheck, Value);
+            Console.Write("'{0}' EndsWith '{1}':    ", toCheck, Value);
             if (toCheck.EndsWith(Value))
             {
                 return true;
@@ -89,11 +89,11 @@ namespace first_project
         public List<string>? Value { get; set; }
         public bool CheckRule(string toCheck)
         {
-            string tmp = string.Join(",", Value);
+            string tmp = string.Join(", ", Value);
             Console.Write("'{0}' any_EndsWith one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
-                if (toCheck.Contains(item))
+                if (toCheck.EndsWith(item))
                 {
                     return true;
                 }
@@ -124,7 +124,7 @@ namespace first_project
 
         public bool CheckRule(string toCheck)
         {
-            string tmp = string.Join(",", Value);
+            string tmp = string.Join(", ", Value);
             Console.Write("'{0}' any_Length of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
@@ -160,7 +160,7 @@ namespace first_project
 
         public bool CheckRule(string toCheck)
         {
-            string tmp = string.Join(",", Value);
+            string tmp = string.Join(", ", Value);
             Console.Write("'{0}' any_GreaterThan one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {
@@ -195,7 +195,7 @@ namespace first_project
 
         public bool CheckRule(string toCheck)
         {
-            string tmp = string.Join(",", Value);
+            string tmp = string.Join(", ", Value);
             Console.Write("'{0}' any_SmallerThan one of ({1}):    ", toCheck, tmp);
             foreach (var item in Value)
             {

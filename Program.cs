@@ -11,10 +11,9 @@ namespace first_project
     public class program
     {
 
-        
-
         static void Main()
         {
+            //dsf
           
             string? operation;
             string? Value;
@@ -32,6 +31,9 @@ namespace first_project
             operations.Add("10");
             operations.Add("11");
             operations.Add("12");
+
+            Console.WriteLine("Type a string to check:");
+            string? mystring = Console.ReadLine();
 
             while (true)
             {
@@ -61,8 +63,7 @@ namespace first_project
                 return;
             }
 
-            Console.WriteLine("\nType a string to check:");
-            string? mystring = Console.ReadLine();
+            
             RulesFunctions.CheckAllRules(mystring, RulesFunctions.rules);
 
     
@@ -80,8 +81,8 @@ namespace first_project
                     "\n5 - LengthGreaterThan" +
                     "\n6 - LengthSmallerThan" +
                     "\n7 - any_Contains" +
-                    "\n8 - any_EndsWith" +
-                    "\n9 - any_StartsWith" +
+                    "\n8 - any_StartsWith" +
+                    "\n9 - any_EndsWith" +
                     "\n10 - any_Length" +
                     "\n11 - any_LengthGreaterThan" +
                     "\n12 - any_LengthSmallerThan" +

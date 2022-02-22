@@ -10,8 +10,14 @@ namespace first_project
     {
         public static List<IRule> rules = new();
 
+
         public static void CheckAllRules(string mystring, List<IRule> rules)
         {
+            if (rules.Count == 0)
+            {
+                Console.WriteLine("\nNo rules to check!! \nExiting...");
+                return;
+            }
             Console.WriteLine("\nChecking Rules...");
             foreach (IRule rule in rules)
             {
@@ -64,34 +70,35 @@ namespace first_project
 
 
 
-        public static void AddRule(string operation, string Value)
+        public static void AddRule(program.RuleType ruleType, string Value)
         {
 
-            switch (operation)
+            switch ((int)ruleType)
             {
-                case "1":
+                case 0:
+                    Console.WriteLine("con");
                     ContainsRule ContainsRule = new()
                     {
                         Value = Value
                     };
                     rules.Add(ContainsRule);
                     break;
-                case "2":
+                case 1:
+                    Console.WriteLine("atart");
                     StartsWithRule StartsWithRule = new()
                     {
                         Value = Value
                     };
                     rules.Add(StartsWithRule);
                     break;
-                case "3":
+                case 2:
                     EndsWithRule EndsWithRule = new()
                     {
                         Value = Value
                     };
                     rules.Add(EndsWithRule);
                     break;
-
-                case "4":
+                case 3:
                     int? res = CheckValidInt(Value);
                     if (res != null)
                     {
@@ -103,7 +110,7 @@ namespace first_project
                     }
                     break;
 
-                case "5":
+                case 4:
                     res = CheckValidInt(Value);
                     if (res != null)
                     {
@@ -115,7 +122,7 @@ namespace first_project
                     }
                     break;
 
-                case "6":
+                case 5:
                     res = CheckValidInt(Value);
                     if (res != null)
                     {
@@ -126,14 +133,14 @@ namespace first_project
                         rules.Add(LengthSmallerThanRule);
                     }
                     break;
-                case "7":
+                case 6:
                     any_ContainsRule any_ContainsRule = new()
                     {
                         Value = Value.Split(" ").ToList()
             };
                     rules.Add(any_ContainsRule);
                     break;
-                case "8":
+                case 7:
                     any_StartsWithRule any_StartsWithRule = new()
                     {
                         Value = Value.Split(" ").ToList()
@@ -141,7 +148,7 @@ namespace first_project
                     rules.Add(any_StartsWithRule);
                     break;
 
-                case "9":
+                case 8:
                     any_EndsWithRule any_EndsWithRule = new()
                     {
                         Value = Value.Split(" ").ToList()
@@ -149,7 +156,7 @@ namespace first_project
                     rules.Add(any_EndsWithRule);
                     break;
 
-                case "10":
+                case 9:
                     List<int>? IntList = CheckValidIntList(Value.Split(" ").ToList());
                     if (IntList != null)
                     {
@@ -161,7 +168,7 @@ namespace first_project
                     }
                     break;
 
-                case "11":
+                case 10:
                     IntList = CheckValidIntList(Value.Split(" ").ToList());
                     if (IntList != null)
                     {
@@ -173,7 +180,7 @@ namespace first_project
                     }
                     break;
 
-                case "12":
+                case 11:
                     IntList = CheckValidIntList(Value.Split(" ").ToList());
                     if (IntList != null)
                     {
@@ -184,7 +191,6 @@ namespace first_project
                         rules.Add(any_LengthSmallerThanRule);
                     }
                     break;
-
             }
         }
 

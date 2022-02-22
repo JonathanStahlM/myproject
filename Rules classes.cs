@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace first_project
 {
+
     internal class ContainsRule : IRule
     {
         public string Value { get; set; }
@@ -22,7 +23,7 @@ namespace first_project
 
     internal class any_ContainsRule : IRule
     {
-        public List<string>? Value { get; set; }
+        public List<string> Value { get; set; }
         public bool CheckRule(string toCheck)
         {
             string tmp = string.Join(",", Value);
@@ -37,7 +38,7 @@ namespace first_project
             return false;
         }
     }
-
+    
     internal class StartsWithRule : IRule
     {
         public string Value { get; set; }

@@ -1,8 +1,4 @@
-﻿// understanding the op
-//checking it on the string
-//returning true or false
-
-
+﻿
 using System;
 
 
@@ -13,66 +9,27 @@ namespace first_project
 
         static void Main()
         {
-            //new test
-          
-            string? operation;
-            string? Value;
-
-            List<string> operations = new List<string>();
-            operations.Add("1");
-            operations.Add("2");
-            operations.Add("3");
-            operations.Add("4");
-            operations.Add("5");
-            operations.Add("6");
-            operations.Add("7");
-            operations.Add("8");
-            operations.Add("9");
-            operations.Add("10");
-            operations.Add("11");
-            operations.Add("12");
-
-            Console.WriteLine("Type a string to check:");
-            string? mystring = Console.ReadLine();
-
-            while (true)
-            {
-                operation = program.getOperation(operations);
-                if (operation == null)
-                {
-                    Console.WriteLine("\nAdd nother Rule? y/n");
-                    if (Console.ReadLine() == "n")
-                    {
-                        break;
-                    }
-                    continue;
-                }
-                Console.WriteLine("\nType value:");
-                Value = Console.ReadLine();
-                RulesFunctions.AddRule(operation, Value);
-                Console.WriteLine("\nAdd nother Rule? y/n");
-                if (Console.ReadLine() == "n")
-                {
-                    break;
-                }
-            }
-
-            if (RulesFunctions.rules.Count == 0)
-            {
-                Console.WriteLine("\nNo rules to check!! \nExiting...");
-                return;
-            }
-
-            
+            string? mystring = GetStringFromUser();
+            GetRulesFromUser();
             RulesFunctions.CheckAllRules(mystring, RulesFunctions.rules);
-
-    
-        
         }
 
-        static string getOperation(List<string> operations)
+        public static string GetStringFromUser()
         {
-            string? operation = null;
+            Console.WriteLine("Type a string to check:");
+            return Console.ReadLine();
+        }
+        
+
+        public static RuleType? GetRuleType()
+        {
+            PrintAllRuleTypeOptions();
+            return ChooseRuleType();
+        }
+
+
+        public static void PrintAllRuleTypeOptions()
+        {
             Console.WriteLine("\n\nChoose Operation:" +
                     "\n1 - Contains" +
                     "\n2 - StartsWith" +
@@ -85,20 +42,95 @@ namespace first_project
                     "\n9 - any_EndsWith" +
                     "\n10 - any_Length" +
                     "\n11 - any_LengthGreaterThan" +
-                    "\n12 - any_LengthSmallerThan" +
-                    "\n\nMy Choice:");
-            operation = Console.ReadLine();
-            if (!operations.Contains(operation))
+                    "\n12 - any_LengthSmallerThan");
+        }
+
+        public enum RuleType
+        {
+            Contains,
+            StartsWith,
+            EndsWith,
+            Length,
+            LengthGreaterThan,
+            LengthSmallerThan,
+            any_Contains,
+            any_StartsWith,
+            any_EndsWith,
+            any_Length,
+            any_LengthGreaterThan,
+            any_LengthSmallerThan
+        }
+
+        public static RuleType? ChooseRuleType()
+        {
+            Console.WriteLine("\n\nMy Choice:");
+            string? ruleType = Console.ReadLine();
+            switch (ruleType)
             {
-                Console.WriteLine("\nInvalid Operation!!\n");
-                return null;
+                case "1":
+                    return RuleType.Contains;
+                case "2":
+                    return RuleType.StartsWith;
+                case "3":
+                    return RuleType.EndsWith;
+                case "4":
+                    return RuleType.Length;
+                case "5":
+                    return RuleType.LengthGreaterThan;
+                case "6":
+                    return RuleType.LengthSmallerThan;
+                case "7":
+                    return RuleType.any_Contains;
+                case "8":
+                    return RuleType.any_StartsWith;
+                case "9":
+                    return RuleType.any_EndsWith;
+                case "10":
+                    return RuleType.any_Length;
+                case "11":
+                    return RuleType.any_LengthGreaterThan;
+                case "12":
+                    return RuleType.any_LengthSmallerThan;
             }
-            else
+            Console.WriteLine("\nInvalid Rule Type!!\n");
+            return null;
+        }
+
+        public static void GetRulesFromUser()
+        {
+            RuleType? ruleType;
+            string Value;
+            while (true)
             {
-                return operation;
+                ruleType = GetRuleType();
+                if (ruleType == null)
+                {
+                    Console.WriteLine("\nAdd nother Rule? y/n");
+                    if (Console.ReadLine() == "n")
+                    {
+                        break;
+                    }
+                    continue;
+                }
+                ;
+                Value = GetValueFromUser();
+                RulesFunctions.AddRule((RuleType)ruleType, Value);
+
+                Console.WriteLine("\nAdd nother Rule? y/n");
+                if (Console.ReadLine() == "n")
+                {
+                    break;
+                }
             }
         }
-        
+
+        public static string GetValueFromUser()
+        {
+            Console.WriteLine("\nType value:");
+            return Console.ReadLine();
+        }
+
+
 
     }
             

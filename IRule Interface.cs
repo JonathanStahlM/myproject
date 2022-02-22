@@ -9,10 +9,13 @@ namespace first_project
 
     public interface IRule
     {
+        
         public bool CheckRule(string toCheck);
-
-
+        //public TValue Value { get; }   
+        
     }
+
+   
 }
 
 

@@ -11,7 +11,7 @@ namespace first_project
         public static List<IRule> rules = new();
 
 
-        public static void CheckAllRules(string mystring, List<IRule> rules)
+        public static void CheckAllRules(string mystring)
         {
             if (rules.Count == 0)
             {

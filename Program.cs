@@ -9,9 +9,7 @@ namespace first_project
 
         static void Main()
         {
-            string? mystring = GetStringFromUser();
-            GetRulesFromUser();
-            RulesFunctions.CheckAllRules(mystring, RulesFunctions.rules);
+            RandomFileGenerator.GenarateRules();
         }
 
         public static string GetStringFromUser()

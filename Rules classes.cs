@@ -6,6 +6,172 @@ using System.Threading.Tasks;
 
 namespace first_project
 {
+    static class Global
+    {
+        public static int NumberOfRules = 12;
+        public static int NumberOfStringRules = 6;
+        public static int NumberOfIntRules = 6;
+    }
+
+    public abstract class Rule
+    {
+        //public List<T> Value { get; set; }
+        public RuleType ruleType { get; set; }
+        public abstract bool CheckRule(string myString);
+        public static List<Rule> rules = new();
+
+        /*
+        public StringRule CreateRule(RuleType ruleType, List<string> value)
+        {
+                StringRule rule = new StringRule()
+                {
+                    ruleType = ruleType,
+                    Value = value,
+                };
+            return rule;
+        }
+        public StringRule CreateRule(RuleType ruleType, List<string> value)
+        {
+            IntRule rule = new IntRule()
+            {
+                ruleType = ruleType,
+                Value = value,
+            };
+            return rule;
+        }*/
+
+    }
+
+    public enum RuleType
+    {
+        Contains,
+        StartsWith,
+        EndsWith,
+        any_Contains,
+        any_StartsWith,
+        any_EndsWith,
+        Length,
+        LengthGreaterThan,
+        LengthSmallerThan,
+        any_Length,
+        any_LengthGreaterThan,
+        any_LengthSmallerThan
+    }
+
+    class IntRule : Rule
+    {
+        public List<int> Value { get; set; }
+
+        public override bool CheckRule(string myString)
+        {
+            int myStringLength = myString.Length;
+            switch ((int)ruleType)
+            {
+                case 9 or 3:
+                    return any_Length(myStringLength);
+                case 10 or 4:
+                    return any_LengthGreaterThan(myStringLength);
+                case 11 or 5:
+                    return any_LengthSmallerThan(myStringLength);
+            }
+            return false;
+            
+        }
+
+
+        public bool any_Length(int myStringLength)
+        {
+            foreach (var item in Value)
+            {
+                if (myStringLength == item)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool any_LengthGreaterThan(int myStringLength)
+        {
+            foreach (var item in Value)
+            {
+                if (myStringLength > item)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool any_LengthSmallerThan(int myStringLength)
+        {
+            foreach (var item in Value)
+            {
+                if (myStringLength < item)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    class StringRule : Rule
+    {
+        public List<string> Value { get; set; }
+
+        public override bool CheckRule(string myString)
+        {
+            switch ((int)ruleType)
+            {
+                case 0 or 6:
+                    return any_Contains(myString);
+                case 1 or 7:
+                    return any_StartsWith(myString);
+                case 2 or 8:
+                    return any_EndsWith(myString);
+            }
+            return true;
+        }
+
+        public bool any_Contains(string myString)
+        {
+            foreach (string item in Value)
+            {
+                if (myString.Contains(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool any_StartsWith(string myString)
+        {
+            foreach (string item in Value)
+            {
+                if (myString.StartsWith(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool any_EndsWith(string myString)
+        {
+            foreach (string item in Value)
+            {
+                if (myString.EndsWith(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    }
+
+
 
     internal class ContainsRule : IRule
     {
@@ -19,7 +185,15 @@ namespace first_project
             }
             return false;
         }
+
+
     }
+
+
+
+
+
+
 
     internal class any_ContainsRule : IRule
     {

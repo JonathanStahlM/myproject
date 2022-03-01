@@ -13,3 +13,5 @@ C:\Users\t-jstahl\source\repos\first project\first project\obj\Debug\net6.0\ref\
 C:\Users\t-jstahl\source\repos\first project\first project\obj\Debug\net6.0\first project.pdb
 C:\Users\t-jstahl\source\repos\first project\first project\obj\Debug\net6.0\first project.genruntimeconfig.cache
 C:\Users\t-jstahl\source\repos\first project\first project\obj\Debug\net6.0\refint\first project.dll
+C:\Users\t-jstahl\source\repos\first project\first project\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\t-jstahl\source\repos\first project\first project\obj\Debug\net6.0\first project.csproj.CopyComplete

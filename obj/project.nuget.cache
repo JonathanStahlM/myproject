@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "NTGYryl1B8RdrnK6CbkSP2x28ecofRi1LikdCEXUI16uXpAzHezsQjxyVyRjRepq91weVAAWavMIN8qhItKhCg==",
+  "dgSpecHash": "cHISJjFW4hCt4ODJ+aqFGqHTCcrkmLC42mtqgj3xS5uMSBpfxSwoYx8UrWEHkQ5v5JyipOSJYL3TuowhdUHsCg==",
   "success": true,
   "projectFilePath": "C:\\Users\\t-jstahl\\source\\repos\\first project\\first project\\first project.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\t-jstahl\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
